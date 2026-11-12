@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Digitalwerk Kermo – Webseiten für Handwerks- und Baufirmen</title>
 <meta name="description" content="Webseiten für Handwerks-, Bau- und Immobilienfirmen in der Region Zürich. Fixpreis, ohne Tracking, schnell online.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="fonts/fonts.css" rel="stylesheet">
 <style>
 :root {
   /* Layout: Einleitung, drei Beispiele als grosse Vorschaubilder, Pakete, Kontakt */
@@ -42,7 +40,7 @@ nav { display: flex; gap: 20px; font-size: 15px; }
 nav a { text-decoration: none; }
 nav a:hover { color: var(--accent); }
 
-.hero { padding: 56px 0 72px; display: grid; gap: 22px; }
+.hero { padding-top: 56px; padding-bottom: 72px; display: grid; gap: 22px; }
 .hero p { font-size: 19px; }
 .points { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
 .points span { font-size: 14px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; background: var(--card); }
@@ -50,7 +48,7 @@ nav a:hover { color: var(--accent); }
 .examples { display: grid; gap: 28px; padding-bottom: 88px; }
 .example { display: grid; grid-template-columns: 1.35fr 1fr; gap: 32px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 20px; text-decoration: none; transition: border-color .15s; }
 .example:hover { border-color: var(--accent); }
-.example img { border-radius: 3px; border: 1px solid var(--line); aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.example img { width: 100%; height: auto; border-radius: 3px; border: 1px solid var(--line); aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
 .example .txt { display: grid; gap: 10px; padding-right: 12px; }
 .example .type { font: 600 13px/1 var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
 .example .go { font: 600 15px/1 var(--display); color: var(--accent); margin-top: 6px; }
@@ -63,7 +61,7 @@ nav a:hover { color: var(--accent); }
 .pkg ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; display: grid; gap: 4px; }
 .intro-note { font-size: 15px; margin-top: 20px; }
 
-.contact { padding: 80px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.contact { padding-top: 80px; padding-bottom: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
 .contact .box { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 28px; display: grid; gap: 8px; align-content: start; }
 
 footer .wrap { border-top: 1px solid var(--line); padding-top: 20px; padding-bottom: 36px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--muted); }
@@ -127,11 +125,12 @@ footer .wrap { border-top: 1px solid var(--line); padding-top: 20px; padding-bot
     <div class="box">
       <strong>Aladin Kermo</strong>
       <span class="muted">Digitalwerk Kermo</span>
-      <!-- KONTAKT: E-Mail und Telefon hier eintragen -->
+      <span>Huebwiesenstrasse 35, 8954 Geroldswil</span>
+      <a href="mailto:aladinkermo@hotmail.com" style="font-weight:600;color:var(--accent)">aladinkermo@hotmail.com</a>
     </div>
   </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Digitalwerk Kermo · Aladin Kermo</span><span>Diese Seite verwendet keine Cookies und kein Tracking.</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Digitalwerk Kermo · Aladin Kermo · <a href="impressum.html">Impressum &amp; Datenschutz</a></span><span>Diese Seite verwendet keine Cookies und kein Tracking.</span></div></footer>
 </body>
 </html>
