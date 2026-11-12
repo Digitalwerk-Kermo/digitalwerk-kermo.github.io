@@ -9,227 +9,60 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="fonts/fonts.css" rel="stylesheet">
-<style>
-:root {
-  /* Layout: schwarzer Einstieg mit Pixel-Haus, danach helle Abschnitte, Kontakt wieder dunkel */
-  --night: #0a0b0d;
-  --white: #ffffff;
-  --soft: #f3f4f7;
-  --ink: #0f1115;
-  --muted: #5e636e;
-  --blue: #3d6bff;
-  --cyan: #2ec4f0;
-  --line: #e2e4ea;
-  --font: "Outfit", "Helvetica Neue", Arial, sans-serif;
-  color-scheme: light;
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; }
-html { scroll-behavior: smooth; }
-body { background: var(--white); color: var(--ink); font: 400 18px/1.6 var(--font); }
-a { color: inherit; }
-a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
-img { max-width: 100%; display: block; }
-.wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
-h1, h2, h3 { font-weight: 400; margin: 0; line-height: 1.04; letter-spacing: -0.02em; text-wrap: balance; }
-h1 { font-size: clamp(48px, 8.4vw, 112px); font-weight: 300; }
-h2 { font-size: clamp(34px, 5vw, 60px); font-weight: 300; }
-h3 { font-size: 24px; font-weight: 500; }
-p { margin: 0; max-width: 58ch; }
-.blue { color: var(--blue); }
-.label { font-size: 14px; font-weight: 500; letter-spacing: .04em; color: var(--muted); }
-.pill { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 500 15px/1 var(--font); padding: 12px 20px; border-radius: 99px; border: 1px solid currentColor; transition: background .2s, color .2s; }
-.pill:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
-.pill.solid { background: var(--blue); border-color: var(--blue); color: #fff; }
-.pill.solid:hover { background: #fff; color: var(--ink); border-color: #fff; }
-
-/* Kopf */
-.head { background: var(--night); color: #fff; }
-.head nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 24px; padding-bottom: 24px; }
-.logo { text-decoration: none; font: 500 20px/1 var(--font); display: inline-flex; align-items: center; gap: 10px; }
-.logo i { display: inline-grid; grid-template-columns: repeat(2, 7px); gap: 2px; }
-.logo i b { width: 7px; height: 7px; background: var(--blue); }
-.logo i b:nth-child(2) { background: var(--cyan); }
-.logo i b:nth-child(3) { background: #b9bdf5; }
-.links { display: flex; gap: 28px; font-size: 15px; }
-.links a { text-decoration: none; color: #c9ccd4; }
-.links a:hover { color: #fff; }
-
-/* Hero */
-.hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: end; padding-top: 72px; padding-bottom: 96px; }
-.hero .copy { display: grid; gap: 34px; }
-.hero p { color: #aeb3be; font-size: 19px; }
-.hero .btns { display: flex; gap: 12px; flex-wrap: wrap; }
-.pixels { width: 100%; height: auto; overflow: visible; }
-.pixels rect { animation: glow 4.2s ease-in-out var(--d, 0s) infinite; }
-.pixels .loose { animation: drift 6s ease-in-out infinite; }
-@keyframes glow { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
-@keyframes drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-10px, 8px); } }
-
-/* Aussage */
-.statement { padding-top: 120px; padding-bottom: 100px; }
-.statement p.big { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.22; font-weight: 300; max-width: 30ch; letter-spacing: -0.01em; }
-.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 72px; border-top: 1px solid var(--line); }
-.facts div { padding-top: 22px; display: grid; gap: 6px; }
-.facts strong { font-size: 30px; font-weight: 400; font-variant-numeric: tabular-nums; }
-.facts span { font-size: 15px; color: var(--muted); }
-
-/* Beispiele */
-.work { background: var(--soft); padding: 110px 0; }
-.work header { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
-.work header p { color: var(--muted); }
-.cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.case { text-decoration: none; display: grid; gap: 16px; align-content: start; }
-.case .shot { overflow: hidden; border-radius: 8px; background: #fff; }
-.case img { width: 100%; height: auto; aspect-ratio: 16 / 11; object-fit: cover; object-position: top; transition: transform .5s ease; }
-.case:hover img { transform: scale(1.035); }
-.case .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.case .type { font-size: 14px; color: var(--muted); }
-.case h3 { font-size: 22px; }
-.case p { font-size: 16px; color: var(--muted); }
-
-/* Ablauf */
-.steps-sec { padding-top: 110px; padding-bottom: 110px; }
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; counter-reset: s; }
-.step { display: grid; gap: 12px; align-content: start; padding-top: 20px; border-top: 2px solid var(--ink); }
-.step::before { counter-increment: s; content: "0" counter(s); font-size: 15px; color: var(--blue); font-variant-numeric: tabular-nums; }
-.step p { font-size: 16px; color: var(--muted); }
-
-/* Preise */
-.prices { background: var(--soft); padding: 110px 0; }
-.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; align-items: stretch; }
-.plan { background: #fff; border-radius: 10px; padding: 32px; display: grid; gap: 14px; align-content: start; border: 1px solid var(--line); }
-.plan.hl { background: var(--night); color: #fff; border-color: var(--night); }
-.plan .amount { font-size: 46px; font-weight: 300; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.plan .amount small { font-size: 16px; color: var(--muted); letter-spacing: 0; }
-.plan.hl .amount small, .plan.hl .sub, .plan.hl li { color: #aeb3be; }
-.plan .sub { color: var(--muted); font-size: 16px; }
-.plan .intro { font-size: 14px; color: var(--blue); }
-.plan.hl .intro { color: var(--cyan); }
-.plan ul { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; font-size: 16px; color: var(--muted); }
-.plan li { display: grid; grid-template-columns: 14px 1fr; gap: 10px; align-items: baseline; }
-.plan li::before { content: ""; width: 8px; height: 8px; background: var(--blue); }
-.plan.hl li::before { background: var(--cyan); }
-.prices .note { margin-top: 28px; font-size: 16px; color: var(--muted); }
-
-/* Kontakt */
-.contact { background: var(--night); color: #fff; padding: 120px 0 72px; }
-.contact .grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; }
-.contact p { color: #aeb3be; }
-.contact .card { border: 1px solid #262a33; border-radius: 10px; padding: 30px; display: grid; gap: 8px; }
-.contact .card a.mail { font-size: 22px; text-decoration: none; color: #fff; }
-.contact .card a.mail:hover { color: var(--cyan); }
-.foot { margin-top: 96px; padding-top: 22px; border-top: 1px solid #262a33; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #7d828d; }
-.foot a { color: #c9ccd4; }
-
-@media (max-width: 900px) {
-  .hero, .contact .grid { grid-template-columns: 1fr; }
-  .hero .art { max-width: 420px; }
-  .cases, .plans { grid-template-columns: 1fr; }
-  .steps, .facts { grid-template-columns: repeat(2, 1fr); }
-  .links { display: none; }
-}
-@media (max-width: 480px) { .steps, .facts { grid-template-columns: 1fr; } }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .pixels rect, .pixels .loose { animation: none; }
-  .case img { transition: none; }
-}
-</style>
+<link href="css/site.css" rel="stylesheet">
 </head>
 <body>
-
-<header class="head">
+<div class="bar">
   <nav class="wrap" aria-label="Hauptnavigation">
-    <a class="logo" href="./"><i aria-hidden="true"><b></b><b></b><b></b><b></b></i>Digitalwerk Kermo</a>
-    <div class="links"><a href="#beispiele">Beispiele</a><a href="#ablauf">Ablauf</a><a href="#preise">Preise</a></div>
-    <a class="pill" href="#kontakt">Kontakt</a>
+    <a class="logo" href="index.html"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="27" y="3" width="10" height="10" fill="#b9bdf5"/><rect x="15" y="15" width="10" height="10" fill="#2ec4f0"/><rect x="27" y="15" width="10" height="10" fill="#3d6bff"/><rect x="39" y="15" width="10" height="10" fill="#2e3a8c"/><rect x="3" y="27" width="10" height="10" fill="#3d6bff"/><rect x="15" y="27" width="10" height="10" fill="#1f4fd6"/><rect x="27" y="27" width="10" height="10" fill="#2ec4f0"/><rect x="39" y="27" width="10" height="10" fill="#3d6bff"/><rect x="51" y="27" width="10" height="10" fill="#2e3a8c"/><rect x="15" y="39" width="10" height="10" fill="#3d6bff"/><rect x="39" y="39" width="10" height="10" fill="#2ec4f0"/><rect x="15" y="51" width="10" height="10" fill="#2e3a8c"/><rect x="39" y="51" width="10" height="10" fill="#1f4fd6"/></svg>Digitalwerk Kermo</a>
+    <div class="menu"><a href="index.html" aria-current="page">Start</a><a href="beispiele.html">Beispiele</a><a href="preise.html">Preise</a><a href="kontakt.html">Kontakt</a></div>
+    <a class="btn primary cta" href="kontakt.html">Anfrage <span class="arr" aria-hidden="true">→</span></a>
   </nav>
+</div>
+<header class="head">
   <section class="wrap hero">
     <div class="copy">
       <h1>Handwerk,<br><span class="blue">digital.</span></h1>
-      <p>Ich baue Webseiten für Handwerks-, Bau- und Immobilienfirmen in der Region Zürich. Klar, schnell und zum Fixpreis.</p>
-      <div class="btns"><a class="pill solid" href="#beispiele">Beispiele ansehen</a><a class="pill" href="#preise">Preise</a></div>
+      <p>Wir entwickeln Webseiten für Handwerks-, Bau- und Immobilienfirmen in der Region Zürich. Klar, schnell und zum Fixpreis.</p>
+      <div class="btns"><a class="btn primary" href="beispiele.html">Beispiele ansehen <span class="arr" aria-hidden="true">→</span></a><a class="btn light" href="preise.html">Preise <span class="arr" aria-hidden="true">→</span></a></div>
     </div>
     <div class="art"><svg class="pixels" viewBox="0 0 541 364" role="img" aria-label="Haus aus Pixeln"><rect x="156" y="0" width="44" height="44" fill="#b9bdf5" style="--d:0.00s"/><rect x="104" y="52" width="44" height="44" fill="#2ec4f0" style="--d:0.35s"/><rect x="156" y="52" width="44" height="44" fill="#2e3a8c" style="--d:0.70s"/><rect x="208" y="52" width="44" height="44" fill="#3d6bff" style="--d:1.05s"/><rect x="52" y="104" width="44" height="44" fill="#3d6bff" style="--d:1.40s"/><rect x="104" y="104" width="44" height="44" fill="#1f4fd6" style="--d:1.75s"/><rect x="156" y="104" width="44" height="44" fill="#3d6bff" style="--d:2.10s"/><rect x="208" y="104" width="44" height="44" fill="#b9bdf5" style="--d:0.00s"/><rect x="260" y="104" width="44" height="44" fill="#1f4fd6" style="--d:0.35s"/><rect x="0" y="156" width="44" height="44" fill="#3d6bff" style="--d:0.70s"/><rect x="52" y="156" width="44" height="44" fill="#1f4fd6" style="--d:1.05s"/><rect x="104" y="156" width="44" height="44" fill="#2ec4f0" style="--d:1.40s"/><rect x="156" y="156" width="44" height="44" fill="#3d6bff" style="--d:1.75s"/><rect x="208" y="156" width="44" height="44" fill="#3d6bff" style="--d:2.10s"/><rect x="260" y="156" width="44" height="44" fill="#2e3a8c" style="--d:0.00s"/><rect x="312" y="156" width="44" height="44" fill="#2e3a8c" style="--d:0.35s"/><rect x="52" y="208" width="44" height="44" fill="#3d6bff" style="--d:0.70s"/><rect x="156" y="208" width="44" height="44" fill="#2ec4f0" style="--d:1.05s"/><rect x="260" y="208" width="44" height="44" fill="#3d6bff" style="--d:1.40s"/><rect x="52" y="260" width="44" height="44" fill="#1f4fd6" style="--d:1.75s"/><rect x="104" y="260" width="44" height="44" fill="#2e3a8c" style="--d:2.10s"/><rect x="208" y="260" width="44" height="44" fill="#3d6bff" style="--d:0.00s"/><rect x="260" y="260" width="44" height="44" fill="#1f4fd6" style="--d:0.35s"/><rect x="52" y="312" width="44" height="44" fill="#3d6bff" style="--d:0.70s"/><rect x="104" y="312" width="44" height="44" fill="#2ec4f0" style="--d:1.05s"/><rect x="208" y="312" width="44" height="44" fill="#1f4fd6" style="--d:1.40s"/><rect x="260" y="312" width="44" height="44" fill="#3d6bff" style="--d:1.75s"/><rect class="loose" x="426" y="73" width="44" height="44" fill="#2ec4f0"/><rect class="loose" x="489" y="16" width="44" height="44" fill="#b9bdf5"/><rect class="loose" x="463" y="239" width="44" height="44" fill="#3d6bff"/></svg></div>
   </section>
 </header>
-
 <main>
-  <section class="wrap statement">
-    <span class="label">Was ich mache</span>
-    <p class="big" style="margin-top:22px">Ihre Kunden suchen zuerst im Internet. <span class="blue">Ich sorge dafür, dass sie dort in zehn Sekunden sehen, was Sie können und wie man Sie erreicht.</span></p>
-    <div class="facts">
-      <div><strong>ab CHF 890</strong><span>Fixpreis, ohne Überraschungen</span></div>
-      <div><strong>2–3 Wochen</strong><span>vom Gespräch bis online</span></div>
-      <div><strong>0 Cookies</strong><span>kein Tracking, kein Banner</span></div>
-      <div><strong>1 Ansprechperson</strong><span>von Anfang bis Ende</span></div>
-    </div>
-  </section>
-
-  <section class="work" id="beispiele">
+  <section class="sec soft" id="leistungen">
     <div class="wrap">
-      <header>
-        <h2>Beispiele</h2>
-        <p>Drei erfundene Firmen, drei Branchen. So kann Ihre Seite aussehen.</p>
-      </header>
-      <div class="cases">
-        <a class="case" href="tannwald-bau/">
-          <div class="shot"><img src="img/tannwald-bau.jpg" alt="Vorschau Tannwald Bau AG" width="960" height="600" loading="lazy"></div>
-          <div class="meta"><h3>Tannwald Bau AG</h3><span class="type">5 Seiten</span></div>
-          <p>Baufirma mit Leistungen, Referenzen und Team.</p>
-        </a>
-        <a class="case" href="farbwerk-braendli/">
-          <div class="shot"><img src="img/farbwerk-braendli.jpg" alt="Vorschau Farbwerk Brändli" width="960" height="600" loading="lazy"></div>
-          <div class="meta"><h3>Farbwerk Brändli</h3><span class="type">One-Pager</span></div>
-          <p>Malergeschäft, alles Wichtige auf einer Seite.</p>
-        </a>
-        <a class="case" href="senn-sanitaer/">
-          <div class="shot"><img src="img/senn-sanitaer.jpg" alt="Vorschau Senn Sanitär" width="960" height="600" loading="lazy"></div>
-          <div class="meta"><h3>Senn Sanitär</h3><span class="type">One-Pager</span></div>
-          <p>Sanitärbetrieb mit Notfallnummer und Offertanfrage.</p>
-        </a>
-      </div>
+      <div class="sec-head"><span class="label">Was wir machen</span><h2>Alles für Ihren Auftritt im Netz</h2><p>Ihre Kunden suchen zuerst online. Wir sorgen dafür, dass sie in wenigen Sekunden sehen, was Sie können und wie man Sie erreicht.</p></div>
+      <div class="services"><article class="service"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 8h18"/><path class="acc" d="M8 21h8M12 17v4"/></svg></div><h3>Webseiten & One-Pager</h3><p>Von der kompakten Visitenkarte bis zur Webseite mit Referenzen, Team und Kontaktformular.</p></article><article class="service"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4z"/><path class="acc" d="M13 7l4 4"/></svg></div><h3>Texte & Struktur</h3><p>Wir erarbeiten Ihre Texte in einem kurzen Gespräch: verständlich, präzise und auf Ihre Kunden ausgerichtet.</p></article><article class="service"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path class="acc" d="M11 18.5h2"/></svg></div><h3>Für das Smartphone gebaut</h3><p>Die meisten Ihrer Kunden suchen unterwegs. Unsere Seiten sind dafür optimiert und laden schnell.</p></article><article class="service"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle class="acc" cx="12" cy="10" r="2.2"/></svg></div><h3>Lokal gefunden werden</h3><p>Wir richten Ihr Google-Unternehmensprofil ein und legen saubere Grundlagen für die Suche.</p></article><article class="service"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z"/><path class="acc" d="M9 12l2 2 4-4"/></svg></div><h3>Datenschutz inklusive</h3><p>Keine Cookies, kein Tracking, kein Banner. Impressum und Datenschutzerklärung gehören dazu.</p></article><article class="service"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L4 17l3 3 5.2-5.2a4 4 0 0 0 5.3-5.3l-2.5 2.5-2.5-.5-.5-2.5 2.5-2.5z"/><path class="acc" d="M19 15v4M17 17h4"/></svg></div><h3>Hosting & Wartung</h3><p>Auf Wunsch übernehmen wir Betrieb, Sicherheit und kleine Anpassungen. Sie müssen sich um nichts kümmern.</p></article></div>
     </div>
   </section>
-
-  <section class="wrap steps-sec" id="ablauf">
-    <h2>So läuft es ab</h2>
-    <div class="steps">
-      <div class="step"><h3>Vorschau</h3><p>Ich baue Ihnen kostenlos einen ersten Entwurf mit Ihrem Namen und Ihrer Branche.</p></div>
-      <div class="step"><h3>Gespräch</h3><p>30 bis 45 Minuten über Ihre Leistungen, Projekte und Wünsche. Die Texte schreibe ich danach.</p></div>
-      <div class="step"><h3>Umsetzung</h3><p>Sie liefern Logo und Fotos, ich baue die Seite. Zwei Korrekturrunden sind inbegriffen.</p></div>
-      <div class="step"><h3>Online</h3><p>Seite aufschalten, Google-Profil einrichten. Auf Wunsch kümmere ich mich danach um alles Technische.</p></div>
-    </div>
-  </section>
-
-  <section class="prices" id="preise">
+  <section class="sec" id="ablauf">
     <div class="wrap">
-      <h2>Preise</h2>
-      <div class="plans">
-        <div class="plan"><h3>Start</h3><div class="amount">CHF 1'200</div><span class="intro">Einführungspreis CHF 890</span><span class="sub">One-Pager</span><ul><li>Leistungen, Referenzen, Kontakt</li><li>Texte nach kurzem Gespräch</li><li>Impressum und Datenschutz</li><li>2 Korrekturrunden</li></ul></div>
-        <div class="plan hl"><h3>Standard</h3><div class="amount">CHF 2'400</div><span class="intro">Einführungspreis CHF 1'790</span><span class="sub">Startseite plus bis zu 5 Unterseiten</span><ul><li>Alles aus «Start»</li><li>Projekte, Team, Kontaktseite</li><li>Kontaktformular</li><li>Google-Unternehmensprofil eingerichtet</li></ul></div>
-        <div class="plan"><h3>Wartung</h3><div class="amount">CHF 39 <small>/ Monat</small></div><span class="intro">Im ersten Jahr CHF 29</span><span class="sub">Jährlich im Voraus</span><ul><li>Hosting, SSL, Backups</li><li>Änderungen bis 30 Min. pro Monat</li><li>Antwort innert 2 Werktagen</li></ul></div>
-      </div>
-      <p class="note">Die Einführungspreise gelten für die ersten drei Kunden, im Gegenzug für eine Referenz.</p>
+      <div class="sec-head"><span class="label">Ablauf</span><h2>In vier Schritten zur Webseite</h2><p>Vom ersten Entwurf bis zur Lancierung dauert es in der Regel zwei bis drei Wochen.</p></div>
+      <div class="steps"><div class="step"><h3>Analyse & Vorschau</h3><p>Wir analysieren Ihren bisherigen Auftritt und erstellen einen ersten Entwurf, kostenlos und unverbindlich.</p></div><div class="step"><h3>Konzept & Inhalte</h3><p>In einem Gespräch von 30 bis 45 Minuten klären wir Leistungen, Zielgruppe und Aufbau. Auf dieser Grundlage verfassen wir die Texte.</p></div><div class="step"><h3>Gestaltung & Umsetzung</h3><p>Wir setzen die Webseite in Ihrem Erscheinungsbild um. Zwei Korrekturrunden sind im Preis enthalten.</p></div><div class="step"><h3>Lancierung & Betreuung</h3><p>Nach Ihrer Freigabe schalten wir die Seite auf und richten Ihr Google-Profil ein. Auf Wunsch betreuen wir sie danach weiter.</p></div></div>
+    </div>
+  </section>
+  <section class="sec soft" style="padding-top:90px">
+    <div class="wrap tiles">
+      <a class="tile a" href="beispiele.html"><h3>Beispiele</h3><div class="row"><p>Drei Webseiten aus drei Branchen. So kann Ihr Auftritt aussehen.</p><span class="go" aria-hidden="true">→</span></div></a>
+      <a class="tile b" href="preise.html"><h3>Preise</h3><div class="row"><p>Fixpreise ab CHF 890. Transparent und ohne versteckte Kosten.</p><span class="go" aria-hidden="true">→</span></div></a>
     </div>
   </section>
 </main>
-
-<footer class="contact" id="kontakt">
+<footer class="foot" id="kontakt">
   <div class="wrap">
     <div class="grid">
       <div style="display:grid;gap:24px">
-        <h2>Bereit für Ihre<br><span style="color:var(--cyan)">eigene Webseite?</span></h2>
-        <p>Schreiben Sie mir kurz, was Ihr Betrieb macht. Sie erhalten eine unverbindliche Vorschau.</p>
+        <h2>Bereit für Ihre<br><span class="cyan">eigene Webseite?</span></h2>
+        <p>Beschreiben Sie uns kurz Ihren Betrieb. Wir erstellen Ihnen eine unverbindliche Vorschau.</p>
       </div>
       <div class="card">
-        <span class="label" style="color:#7d828d">Aladin Kermo</span>
+        <span class="who">Digitalwerk Kermo · Aladin Kermo</span>
         <a class="mail" href="mailto:aladinkermo@hotmail.com">aladinkermo@hotmail.com</a>
         <span style="color:#aeb3be">Huebwiesenstrasse 35, 8954 Geroldswil</span>
       </div>
     </div>
-    <div class="foot"><span>© 2026 Digitalwerk Kermo · Keine Cookies, kein Tracking</span><a href="impressum.html">Impressum &amp; Datenschutz</a></div>
+    <div class="legal"><span>© 2026 Digitalwerk Kermo · Keine Cookies, kein Tracking</span><a href="impressum.html">Impressum &amp; Datenschutz</a></div>
   </div>
 </footer>
 </body>
