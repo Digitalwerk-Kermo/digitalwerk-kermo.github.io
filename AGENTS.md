@@ -5,6 +5,7 @@ Geschäftsseite von Digitalwerk Kermo (Aladin Kermo, Einzelfirma) mit Beispielse
 - Gemeinsames Design: Tokens oben in `css/site.css` (`--blue`, `--cyan`, Schrift Outfit, selbst gehostet unter `fonts/`). Nach CSS-Änderungen den `?v=`-Parameter in allen HTML-Dateien erhöhen.
 - Beispielseiten (`tannwald-bau/`, `senn-sanitaer/`, `farbwerk-braendli/`) haben eigenes CSS im `<style>` und müssen sichtbar als «Beispielseite, erfundene Firma» gekennzeichnet bleiben.
 - Keine Cookies, kein Tracking, keine Drittanbieter-Einbindungen – so steht es in der Datenschutzerklärung. Wer etwas davon einbaut, muss `impressum.html` anpassen.
+- Kontrast nach jeder Farbänderung mit `tools/kontrast-check.mjs` prüfen (Anleitung oben in der Datei) – er misst auch `::before`/`::after` und dunkle Abschnitte.
 - `404.html` nutzt absolute Pfade (`/css/…`), weil GitHub Pages sie unter jeder Adresse ausliefert.
 - Diese Seite und alle Kundenseiten sind öffentlich: **Teil A und Teil B** der Checkliste gelten.
 
@@ -30,7 +31,7 @@ Projektspezifische Regeln (CLAUDE.md/AGENTS.md im Repo) gehen vor – z. B. echt
 
 Typischer «KI-Look» vermeiden:
 1. **Keine lila/violetten Verläufe** und keine Verläufe als Hauptgestaltung. Verläufe nur, wenn sie zur Marke passen.
-2. **Echte Icons statt Emojis** (SVG, z. B. Lucide-Stil, `aria-hidden="true"`). Textsymbole wie ▶ mit `︎`, damit iOS kein Emoji zeigt.
+2. **Echte Icons statt Emojis** (SVG, z. B. Lucide-Stil, `aria-hidden="true"`). Textsymbole wie ▶ mit dem unsichtbaren Zeichen `U+FE0E` direkt dahinter (Text-Darstellung), damit iOS kein Emoji zeigt.
 3. **Tab-Titel + Favicon** auf jeder Seite (aussagekräftiger `<title>`, `favicon`, `apple-touch-icon`; bei Apps `manifest.webmanifest`).
 4. **Weniger Karten, mehr Luft**: nicht alles in Karten packen, keine Karten in Karten.
 5. **Schrift nicht Inter** (und nicht Arial/Standard als einzige Wahl): eine bewusst gewählte Schrift passend zum Projekt. Für Kundenseiten Schriften **selbst hosten** (keine Google-Fonts-Einbindung).
@@ -43,12 +44,17 @@ Typischer «KI-Look» vermeiden:
 12. **Leerzustände gestalten**: Was sieht man, wenn noch keine Daten da sind? Kurzer Satz + nächster Schritt.
 13. **Ladezustände**: Platzhalter/Skeleton oder «Lade …», nie eine leere Seite.
 14. **Eigene 404-Seite** im Stil der Seite, mit Weg zurück (bei GitHub Pages/Vercel `404.html` mit absoluten Pfaden; bei Shopify Vorlage + Übersetzung).
-15. **Verständliche Fehlermeldungen**: Deutsch, sagt was passiert ist und was man tun kann (z. B. «Keine Verbindung. Prüfe dein Internet und versuche es nochmals.»). Technische Meldungen höchstens klein als «Details».
+15. **Verständliche Fehlermeldungen**: Deutsch, sagt was passiert ist und was man tun kann. Technische Meldungen höchstens klein als «Details». Dabei:
+    - **Nach Herkunft übersetzen, nie nach Sprache raten** (keine Erkennung über «enthält englische Wörter»). Eigene Texte der App bleiben unverändert – auch wenn ein englisches Wort darin vorkommt.
+    - **Eigene Backend-Meldungen** (z. B. `raise exception` in Supabase-Migrationen) über eine feste Übersetzungstabelle; ein Test liest die Migrationen und schlägt fehl, wenn eine Meldung keine Übersetzung hat.
+    - **Fremde Dienste** (Spotify, Zahlungsanbieter …): zuerst am Dienst erkennen, dann passenden Rat je Fehlercode (z. B. 401 neu anmelden, 403 Premium/Konto, 404 Gerät, 429 warten) und die Details des Dienstes sichtbar lassen – nie in eine allgemeine oder fremde Meldung umdeuten.
+    - **Verbindungsabbruch beim Speichern/Absenden**: Der Ausgang ist unklar (kann schon gespeichert sein). Nicht «nochmals versuchen» raten, sondern «Seite neu laden und prüfen, ob es geklappt hat». Wo möglich «schon erledigt» als Erfolg behandeln (z. B. «bereits bewertet» → weiter).
+    - **Jede Fehleranzeige braucht einen Ausweg in der Oberfläche**, der wirklich funktioniert (Knopf «Nochmals laden», Zurück, Neu starten). Was der Text verspricht («tippe auf …»), muss es geben. Kein endloses «Lade …» nach einem Fehler; ein gespeicherter Spielstand bleibt erhalten.
 16. **Sinnvolle Animationen**: nur wo sie etwas erklären, kurz, nur `transform`/`opacity`, immer `prefers-reduced-motion` beachten.
 17. **Referenz geben**: Bei Design-Aufträgen nach Vorbildern fragen bzw. selbst 1–2 passende Referenzen vorschlagen.
 18. **Design-Brief** kurz festhalten (in CLAUDE.md oder README): Zielgruppe, Ton, Farben, Schriften, Vorbilder.
 19. **Design-System zuerst**: Tokens oben in der CSS-Datei definieren, danach nur noch diese verwenden.
-20. **Barrierefreiheit**: Kontrast mind. 4.5:1 für Text (WCAG AA), Alt-Texte für Bilder, Formularfelder mit `<label>`, klare Button-Texte, per Tastatur bedienbar, sichtbarer Fokus, Touch-Ziele mind. 44 px, mobil bei 375 px ohne seitliches Scrollen.
+20. **Barrierefreiheit**: Kontrast mind. 4.5:1 für Text (WCAG AA) – an **jeder** Stelle gegen den tatsächlichen Hintergrund, auch `::before`/`::after` (Zähler, Nummern), Texte in dunklen Abschnitten und auf halbtransparenten Flächen. Wird eine Farbe für eine Stelle geändert, alle anderen Stellen mit derselben Farbe einzeln nachprüfen (auf dunklem Grund braucht es oft die hellere Variante, nicht die dunklere). Alt-Texte für Bilder, Formularfelder mit `<label>`, klare Button-Texte, per Tastatur bedienbar, sichtbarer Fokus, Touch-Ziele mind. 44 px, mobil bei 375 px ohne seitliches Scrollen.
 
 ### Teil B – Recht (nur Kunden-/öffentliche Seiten)
 
@@ -78,9 +84,12 @@ Rechtsrahmen Schweiz (DSG, UWG); bei Kunden in der EU zusätzlich DSGVO/EU-Recht
 ### Prüfung vor dem Abschluss
 
 - Seite bei 375 px und 1280 px ansehen (Screenshot), kein seitliches Scrollen.
-- Automatischer Barrierefreiheits-Check, wenn möglich (z. B. axe-core per Playwright): Kontrast, Labels, Alt-Texte, Überschriften-Reihenfolge.
+- Automatischer Barrierefreiheits-Check (axe-core per Playwright): Labels, Alt-Texte, Überschriften-Reihenfolge.
+- **Zusätzlich** der Kontrast-Check unten (misst auch `::before`/`::after` und dunkle Abschnitte, die axe übersieht). Nach **jeder** Farbänderung erneut laufen lassen, auf allen Seiten. Texte auf Bildern/Verläufen von Auge prüfen.
 - Suchen: Emojis in der Oberfläche, `Inter`, lila Farbwerte (`#8b5cf6`, `#7c3aed`, `#a855f7`, `#6366f1` …), `alert(`, rohe `error.message` in der Anzeige, Google-Fonts-/CDN-Einbindungen (bei Kundenseiten).
-- Fehlerfall ausprobieren (z. B. Netzwerk blockieren) → verständliche Meldung?
+- **Jeden Fehlerweg wirklich durchspielen**, nicht nur den Normalfall: in Playwright einzelne Anfragen blockieren (`page.route('**/pfad/*', r => r.abort())`) – beim ersten Laden, beim **Wiederherstellen eines gespeicherten Stands** (Seite neu laden) und beim Speichern/Absenden. Erwartung: verständliche Meldung + funktionierender Ausweg. Danach Anfrage freigeben, Ausweg klicken → App läuft weiter.
+- Fehlertexte mit echten Beispielen testen: eigene deutsche Texte (auch mit englischen Wörtern) bleiben gleich, Backend- und Dienst-Fehler (inkl. Details) werden richtig zugeordnet, Verbindungsfehler raten zum Neuladen und Prüfen.
+- **Selbstkontrolle wie ein Reviewer**: eigene Änderung nochmals lesen und fragen «Wo wird es dadurch schlechter als vorher?» (andere Stellen mit derselben Farbe, Meldungen, die jetzt anders übersetzt werden, Zustände ohne Bedienung).
 - 404-Adresse aufrufen → eigene Seite?
 - Teil B: Impressum, Datenschutz, ggf. AGB/Rückgabe vorhanden, verlinkt im Footer, Angaben stimmen mit der Technik überein.
 - Im Abschluss nennen: geprüft / geändert / offen (mit Grund).
