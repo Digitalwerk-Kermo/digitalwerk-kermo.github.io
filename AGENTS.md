@@ -6,6 +6,7 @@ Geschäftsseite von Digitalwerk Kermo (Aladin Kermo, Einzelfirma) mit Beispielse
 - Beispielseiten (`tannwald-bau/`, `senn-sanitaer/`, `farbwerk-braendli/`) haben eigenes CSS im `<style>` und müssen sichtbar als «Beispielseite, erfundene Firma» gekennzeichnet bleiben.
 - Keine Cookies, kein Tracking, keine Drittanbieter-Einbindungen – so steht es in der Datenschutzerklärung. Wer etwas davon einbaut, muss `impressum.html` anpassen.
 - Kontrast nach jeder Farbänderung mit `tools/kontrast-check.mjs` prüfen (Anleitung oben in der Datei) – er misst auch `::before`/`::after` und dunkle Abschnitte.
+- `agb.html`: AGB für Webseiten, Hosting und Wartung. Bei Änderungen an Preisen oder Paketen auf `preise.html` die AGB (Ziffern 3, 6, 8) mit anpassen.
 - `404.html` nutzt absolute Pfade (`/css/…`), weil GitHub Pages sie unter jeder Adresse ausliefert.
 - Diese Seite und alle Kundenseiten sind öffentlich: **Teil A und Teil B** der Checkliste gelten.
 
