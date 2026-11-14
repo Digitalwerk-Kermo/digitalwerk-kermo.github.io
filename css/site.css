@@ -6,7 +6,7 @@
   --soft: #f3f4f7;
   --ink: #0f1115;
   --muted: #5e636e;
-  --blue: #3d6bff;
+  --blue: #2f5ef0; /* etwas dunkler als #3d6bff, damit Text und Knöpfe den Kontrast (WCAG AA 4.5:1) erfüllen */
   --cyan: #2ec4f0;
   --lav: #b9bdf5;
   --line: #e2e4ea;
@@ -97,7 +97,7 @@ section.sec { padding-top: 110px; padding-bottom: 110px; }
 .tile.a { background: var(--blue); color: #fff; }
 .tile.b { background: var(--night); color: #fff; }
 .tile h3 { font-size: clamp(30px, 3.6vw, 44px); font-weight: 300; }
-.tile p { color: rgba(255,255,255,.78); font-size: 17px; }
+.tile p { color: rgba(255,255,255,.92); font-size: 17px; }
 .tile .go { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 99px; background: #fff; color: var(--ink); font-size: 22px; transition: transform .2s; }
 .tile:hover .go { transform: translateX(6px); }
 .tile .row { display: flex; justify-content: space-between; align-items: end; gap: 20px; }

@@ -13,6 +13,7 @@
   --ink: #2a2723;
   --muted: #6d665c;
   --gold: #b8913a;
+  --gold-dark: #86681f; /* für Flächen mit weisser Schrift und kleine Zahlen (Kontrast) */
   --night: #2e2d33;
   --line: #d9d1c3;
   --display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
@@ -34,7 +35,7 @@ h3 { font-size: 26px; }
 p { margin: 0; max-width: 62ch; }
 
 /* Notfall-Leiste */
-.topbar { background: var(--gold); color: #fff; font-size: 13px; text-align: center; padding: 7px 16px; letter-spacing: .02em; }
+.topbar { background: var(--gold-dark); color: #fff; font-size: 13px; text-align: center; padding: 7px 16px; letter-spacing: .02em; }
 .topbar a { color: #fff; font-weight: 500; }
 .demo-tag { display: inline-block; margin-left: 10px; padding: 0 8px; border: 1px solid rgba(255,255,255,.6); border-radius: 99px; font-size: 11px; }
 
@@ -74,7 +75,7 @@ p { margin: 0; max-width: 62ch; }
 .services header { display: grid; gap: 12px; margin-bottom: 48px; }
 .list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 64px; }
 .item { display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 18px; }
-.num { color: var(--gold); font-size: 13px; font-variant-numeric: tabular-nums; }
+.num { color: #6f5419; font-size: 13px; font-variant-numeric: tabular-nums; }
 .item p { color: var(--muted); font-size: 15px; }
 
 /* Ablauf (dunkel) */
@@ -84,11 +85,11 @@ p { margin: 0; max-width: 62ch; }
 .panel .eyebrow { font-size: 13px; color: #b9b3a8; }
 .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; counter-reset: s; }
 .steps li { display: grid; grid-template-columns: 34px 1fr; gap: 8px; font-size: 15px; color: #cfc9be; }
-.steps li::before { counter-increment: s; content: counter(s, decimal-leading-zero); color: var(--gold); font-variant-numeric: tabular-nums; }
+.steps li::before { counter-increment: s; content: counter(s, decimal-leading-zero); color: var(--gold); /* helles Gold: steht auf dunklem Grund (--night), 4.6:1 */ font-variant-numeric: tabular-nums; }
 .steps strong { color: #fff; font-weight: 500; display: block; }
 
 /* Offerte */
-.cta { background: var(--gold); color: #fff; padding: 64px 48px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; }
+.cta { background: var(--gold-dark); color: #fff; padding: 64px 48px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; }
 .cta p { color: #fbf3e2; }
 form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 label { display: grid; gap: 6px; font-size: 13px; }
@@ -98,7 +99,7 @@ select option { color: var(--ink); }
 ::placeholder { color: rgba(255,255,255,.75); }
 textarea { min-height: 96px; resize: vertical; }
 .cta .btn { border-color: #fff; color: #fff; justify-self: start; }
-.cta .btn:hover { background: #fff; color: var(--gold); }
+.cta .btn:hover { background: #fff; color: var(--gold-dark); }
 .note { grid-column: 1 / -1; font-size: 13px; min-height: 1.4em; }
 
 /* Footer */
