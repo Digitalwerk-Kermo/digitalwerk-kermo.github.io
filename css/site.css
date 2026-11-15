@@ -158,6 +158,7 @@ section.sec { padding-top: 110px; padding-bottom: 110px; }
 .card a.mail:hover { color: var(--cyan); }
 .legal { margin-top: 96px; padding-top: 22px; border-top: 1px solid #262a33; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #7d828d; }
 .legal a { color: #c9ccd4; }
+.legal-links { display: flex; gap: 20px; flex-wrap: wrap; }
 
 /* Rechtstexte */
 .text { display: grid; gap: 16px; max-width: 720px; }
