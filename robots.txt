@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://digitalwerk-kermo.github.io/sitemap.xml
