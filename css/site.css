@@ -154,7 +154,7 @@ section.sec { padding-top: 110px; padding-bottom: 110px; }
 .foot p { color: #aeb3be; }
 .card { border: 1px solid #262a33; border-radius: 14px; padding: 30px; display: grid; gap: 8px; background: var(--night-2); }
 .card .who { font-size: 14px; color: #7d828d; }
-.card a.mail { font-size: 22px; text-decoration: none; color: #fff; word-break: break-word; }
+.card a.mail { font-size: 22px; text-decoration: none; color: #fff; overflow-wrap: break-word; }
 .card a.mail:hover { color: var(--cyan); }
 .legal { margin-top: 96px; padding-top: 22px; border-top: 1px solid #262a33; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #7d828d; }
 .legal a { color: #c9ccd4; }
@@ -188,3 +188,4 @@ section.sec { padding-top: 110px; padding-bottom: 110px; }
   .pixels rect, .pixels .loose { animation: none; }
   .case img, .service, .tile, .tile .go, .btn .arr { transition: none; }
 }
+.scope h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
