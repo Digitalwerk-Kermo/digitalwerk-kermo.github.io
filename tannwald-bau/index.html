@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Tannwald Bau AG</title>
+<title>Tannwald Bau AG – Umbau, Anbau und Neubau im Zürcher Unterland (Beispiel)</title>
+<meta name="description" content="Beispielseite einer erfundenen Baufirma: Umbau und Sanierung, Anbau und Aufstockung, Neubau und Kundenarbeiten.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link href="../fonts/fonts.css" rel="stylesheet">
 <style>
 :root {
@@ -42,7 +44,7 @@ p { margin: 0; max-width: 62ch; }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 19px/1 var(--display); }
 .logo svg { width: 30px; height: 30px; }
 .menu { display: flex; gap: 4px; flex-wrap: wrap; }
-.menu a { text-decoration: none; font: 500 15px/1 var(--display); padding: 9px 12px; border-radius: 3px; }
+.menu a { text-decoration: none; font: 500 15px/1 var(--display); padding: 14px 14px; min-height: 44px; display: inline-flex; align-items: center; border-radius: 3px; }
 .menu a:hover { background: var(--concrete); }
 .menu a[aria-current="page"] { background: var(--green); color: #fff; }
 
@@ -120,6 +122,10 @@ footer a { text-decoration: none; }
 .legal .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 16px; padding-bottom: 28px; font-size: 13px; grid-template-columns: none; }
 
 @media (max-width: 880px) {
+  .nav .wrap { flex-direction: column; align-items: stretch; gap: 8px; }
+  .menu { flex-wrap: nowrap; overflow-x: auto; margin: 0 -24px; padding: 0 24px; scrollbar-width: none; }
+  .menu a { white-space: nowrap; }
+  .top .wrap span:first-child { display: none; }
   .hero, .about, .contact { grid-template-columns: 1fr; }
   .cards, .projects { grid-template-columns: 1fr; }
   .figures { grid-template-columns: repeat(2, 1fr); }
@@ -135,7 +141,7 @@ footer a { text-decoration: none; }
 </style>
 </head>
 <body>
-<a href="../" style="position:fixed;right:14px;bottom:14px;z-index:50;background:#17191c;color:#fff;font:600 13px/1 sans-serif;padding:10px 14px;border-radius:99px;text-decoration:none">← Digitalwerk Kermo</a>
+<a href="../" style="position:fixed;right:14px;bottom:14px;z-index:50;background:#17191c;color:#fff;font:600 14px/1 sans-serif;padding:15px 18px;min-height:44px;border-radius:99px;text-decoration:none">← Digitalwerk Kermo</a>
 
 <!-- Planzeichnungen als Platzhalter für Projektfotos -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
