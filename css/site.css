@@ -30,7 +30,7 @@ p { margin: 0; max-width: 58ch; }
 .blue { color: var(--blue); }
 .cyan { color: var(--cyan); }
 .muted { color: var(--muted); }
-.label { font-size: 14px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); }
+.label { font-size: 16px; font-weight: 500; color: var(--blue); }
 
 /* Knöpfe */
 .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 500 17px/1 var(--font); padding: 17px 26px; border-radius: 99px; border: 1.5px solid currentColor; transition: background .2s, color .2s, border-color .2s; }
@@ -44,7 +44,7 @@ p { margin: 0; max-width: 58ch; }
 .btn.dark:hover { background: var(--blue); border-color: var(--blue); }
 
 /* Navigationsleiste */
-.bar { position: sticky; top: 0; z-index: 20; background: rgba(20, 22, 27, .94); box-shadow: 0 6px 24px rgba(0,0,0,.35); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 2px solid transparent; border-image: linear-gradient(90deg, var(--blue), var(--cyan), var(--lav)) 1; color: #fff; }
+.bar { position: sticky; top: 0; z-index: 20; background: rgba(20, 22, 27, .94); box-shadow: 0 6px 24px rgba(0,0,0,.35); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgb(255 255 255 / .1); color: #fff; }
 .bar nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
 .logo { text-decoration: none; font: 500 20px/1 var(--font); display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
 .logo svg { width: 26px; height: 26px; }
@@ -61,10 +61,6 @@ p { margin: 0; max-width: 58ch; }
 .hero p { color: #aeb3be; font-size: 20px; }
 .btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .pixels { width: 100%; height: auto; overflow: visible; }
-.pixels rect { animation: glow 4.2s ease-in-out var(--d, 0s) infinite; }
-.pixels .loose { animation: drift 6s ease-in-out infinite; }
-@keyframes glow { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
-@keyframes drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-10px, 8px); } }
 .page-head { padding-top: 80px; padding-bottom: 80px; display: grid; gap: 22px; }
 .page-head p { color: #aeb3be; font-size: 20px; }
 
@@ -75,12 +71,12 @@ section.sec { padding-top: 110px; padding-bottom: 110px; }
 .sec-head p { color: var(--muted); font-size: 19px; }
 
 /* Leistungen */
-.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.service { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 30px; display: grid; gap: 14px; align-content: start; transition: border-color .2s, transform .2s; }
-.service:hover { border-color: var(--blue); transform: translateY(-3px); }
-.icon { width: 56px; height: 56px; border-radius: 12px; background: var(--night); display: grid; place-items: center; }
-.icon svg { width: 28px; height: 28px; stroke: #fff; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.icon svg .acc { stroke: var(--cyan); }
+.services { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 48px; row-gap: 48px; }
+.service { display: grid; grid-template-columns: 32px 1fr; column-gap: 16px; row-gap: 8px; align-content: start; padding-top: 24px; border-top: 1px solid rgb(15 17 21 / .12); }
+.service h3, .service p { grid-column: 2; }
+.icon { grid-row: 1 / span 2; width: 32px; height: 32px; }
+.icon svg { width: 28px; height: 28px; stroke: var(--ink); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.icon svg .acc { stroke: var(--blue); }
 .service p { color: var(--muted); font-size: 16px; }
 
 /* Ablauf */
@@ -185,7 +181,10 @@ section.sec { padding-top: 110px; padding-bottom: 110px; }
 @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .pixels rect, .pixels .loose { animation: none; }
-  .case img, .service, .tile, .tile .go, .btn .arr { transition: none; }
+  .case img, .tile, .tile .go, .btn .arr { transition: none; }
 }
 .scope h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+
+/* Kontaktseite: Fuss ohne zweiten Aufruf */
+.foot.slim { padding-top: 48px; }
+.foot.slim .legal { margin-top: 0; }
