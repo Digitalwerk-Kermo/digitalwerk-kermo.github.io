@@ -13,9 +13,14 @@
   /* Layout: schmale Textspalte, Farbmuster als Bildsprache, Kontakt immer sichtbar */
   --chalk: #f7f6f2;
   --wall: #eceae4;
-  --ink: #23262a;
+  --ink: #121316;
   --muted: #62666b;
-  --teal: #3f6f73;
+  --teal: #121316; /* Knöpfe und Fokus: Tinte, damit sie auf jeder Farbe funktionieren */
+  /* Bunte Variante: Farbfächer – jede Fläche ist ein Farbton aus dem Sortiment */
+  --sun: #f4b223;
+  --cobalt: #2450c8;
+  --tomato: #e45a3b;
+  --mint: #2f9e6f;
   --line: #d8d5cd;
   --display: "Libre Caslon Text", Georgia, serif;
   --body: "Karla", "Helvetica Neue", Arial, sans-serif;
@@ -83,6 +88,21 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 40px; display: flex;
   .hero { padding-top: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* Farbflächen über die ganze Breite */
+header, .hero, .quote, .contact { position: relative; }
+header, .hero { background: var(--sun); box-shadow: 0 0 0 100vmax var(--sun); clip-path: inset(0 -100vmax); }
+.hero .muted, .brand small { color: #2a2d33; }
+.band { background: var(--cobalt); color: #fff; }
+.band .service { border-top-color: #fff; }
+.band .service p { color: rgb(255 255 255 / .88); }
+.quote { background: var(--tomato); box-shadow: 0 0 0 100vmax var(--tomato); clip-path: inset(0 -100vmax); border: 0; margin-top: 0; }
+.quote .muted { color: var(--ink); }
+.contact { background: var(--mint); box-shadow: 0 0 0 100vmax var(--mint); clip-path: inset(0 -100vmax); }
+.contact .muted { color: var(--ink); }
+.contact input, .contact textarea { border-color: rgb(0 0 0 / .2); }
+.note { color: var(--ink); font-weight: 600; }
+.btn.ghost { border-color: var(--ink); }
 </style>
 </head>
 <body>
@@ -106,12 +126,12 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 40px; display: flex;
       </div>
     </div>
     <div class="swatches" role="img" aria-label="Farbmuster als Platzhalter für Projektfotos">
-      <div class="sw" style="background:#e9e4d8"><span>Kalkweiss</span></div>
-      <div class="sw" style="background:#9fb4b1"><span>Salbei</span></div>
-      <div class="sw" style="background:#c9b59a"><span>Sandstein</span></div>
-      <div class="sw" style="background:#3f6f73"><span>Petrol</span></div>
-      <div class="sw" style="background:#d9d3cb"><span>Nebelgrau</span></div>
-      <div class="sw" style="background:#b26b4c"><span>Ziegel</span></div>
+      <div class="sw" style="background:#fbf8f1"><span>Kalkweiss</span></div>
+      <div class="sw" style="background:#e45a3b"><span>Tomate</span></div>
+      <div class="sw" style="background:#2450c8"><span>Kobalt</span></div>
+      <div class="sw" style="background:#2f9e6f"><span>Minze</span></div>
+      <div class="sw" style="background:#f2a7a0"><span>Rosé</span></div>
+      <div class="sw" style="background:#121316"><span>Tinte</span></div>
     </div>
   </section>
 </div>
