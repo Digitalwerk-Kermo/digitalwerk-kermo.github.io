@@ -103,6 +103,9 @@ header, .hero { background: var(--sun); box-shadow: 0 0 0 100vmax var(--sun); cl
 .contact input, .contact textarea { border-color: rgb(0 0 0 / .2); }
 .note { color: var(--ink); font-weight: 600; }
 .btn.ghost { border-color: var(--ink); }
+.photo { margin: 0; position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 4 / 5; max-height: 560px; justify-self: end; width: 100%; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo figcaption { position: absolute; left: 12px; bottom: 12px; font-size: 12px; background: rgb(255 255 255 / .9); color: var(--ink); padding: 3px 9px; border-radius: 2px; }
 </style>
 </head>
 <body>
@@ -125,13 +128,7 @@ header, .hero { background: var(--sun); box-shadow: 0 0 0 100vmax var(--sun); cl
         <a class="btn ghost" href="#leistungen">Leistungen</a>
       </div>
     </div>
-    <div class="swatches" role="img" aria-label="Farbmuster als Platzhalter für Projektfotos">
-      <div class="sw" style="background:#fbf8f1"><span>Kalkweiss</span></div>
-      <div class="sw" style="background:#e45a3b"><span>Tomate</span></div>
-      <div class="sw" style="background:#2450c8"><span>Kobalt</span></div>
-      <div class="sw" style="background:#2f9e6f"><span>Minze</span></div>
-      <div class="sw" style="background:#f2a7a0"><span>Rosé</span></div>
-      <div class="sw" style="background:#121316"><span>Tinte</span></div>
+    <figure class="photo"><img src="../img/fotos/farbwerk-roller.webp" alt="Farbroller auf einer Wand mit grünen, roten, orangen und blauen Bahnen" loading="eager" decoding="async"><figcaption>Beispielfoto</figcaption></figure>
     </div>
   </section>
 </div>
@@ -186,7 +183,7 @@ header, .hero { background: var(--sun); box-shadow: 0 0 0 100vmax var(--sun); cl
 <div class="wrap">
   <footer>
     <span>© 2026 Farbwerk Brändli · <a href="#top">Impressum</a> · <a href="#top">Datenschutz</a></span>
-    <span class="tag">Beispielseite, erfundene Firma</span>
+    <span class="tag">Beispielseite, erfundene Firma · Fotos: <a href="https://unsplash.com/license">Unsplash</a></span>
   </footer>
 </div>
 <script>

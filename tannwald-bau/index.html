@@ -58,7 +58,9 @@ section.block { padding: 72px 0; }
 
 /* Planzeichnungen */
 .plan { background: var(--concrete); border: 1px solid var(--line); position: relative; }
+.plan { overflow: hidden; }
 .plan svg { width: 100%; height: 100%; display: block; }
+.plan img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .plan figcaption { position: absolute; left: 12px; bottom: 10px; font-size: 12px; background: var(--paper); padding: 3px 9px; border-radius: 2px; }
 
 /* Start */
@@ -87,7 +89,7 @@ section.block { padding: 72px 0; }
 .service ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; display: grid; gap: 4px; }
 
 /* Projekte */
-.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 .project { display: grid; gap: 14px; }
 .project .plan { aspect-ratio: 16 / 10; }
 .meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; color: var(--muted); }
@@ -144,50 +146,6 @@ footer a { text-decoration: none; }
 <body>
 <a href="../" style="position:fixed;right:14px;bottom:14px;z-index:50;background:#17191c;color:#fff;font:600 14px/1 sans-serif;padding:15px 18px;min-height:44px;border-radius:99px;text-decoration:none">← Digitalwerk Kermo</a>
 
-<!-- Planzeichnungen als Platzhalter für Projektfotos -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#262a27" stroke-width="1"/></pattern>
-    <symbol id="efh" viewBox="0 0 500 400">
-      <rect width="500" height="400" fill="url(#grid)"/>
-      <g fill="none" stroke="#d9d6cc" stroke-width="2.5">
-        <path d="M90 330V180L250 70L410 180V330Z"/><path d="M60 330H440"/>
-        <rect x="130" y="210" width="60" height="70"/><rect x="310" y="210" width="60" height="70"/>
-        <rect x="225" y="240" width="50" height="90"/><rect x="220" y="125" width="60" height="45"/>
-      </g>
-      <g stroke="#e3a63c" stroke-width="1.5"><path d="M90 360H410"/><path d="M90 352V368M410 352V368"/></g>
-      <text x="250" y="385" text-anchor="middle" font-family="Archivo, sans-serif" font-size="14" fill="#a4a9a3">12.40 m</text>
-    </symbol>
-    <symbol id="mfh" viewBox="0 0 500 400">
-      <rect width="500" height="400" fill="url(#grid)"/>
-      <g fill="none" stroke="#d9d6cc" stroke-width="2.5">
-        <rect x="80" y="70" width="340" height="260"/><path d="M50 330H450M70 70H430"/>
-        <g id="row"><rect x="110" y="95" width="45" height="40"/><rect x="185" y="95" width="45" height="40"/><rect x="270" y="95" width="45" height="40"/><rect x="345" y="95" width="45" height="40"/></g>
-        <use href="#row" y="70"/><use href="#row" y="140"/>
-        <rect x="225" y="287" width="50" height="43"/>
-      </g>
-      <g stroke="#e3a63c" stroke-width="1.5"><path d="M460 70V330"/><path d="M452 70H468M452 330H468"/></g>
-      <text x="472" y="205" font-family="Archivo, sans-serif" font-size="14" fill="#a4a9a3">3 OG</text>
-    </symbol>
-    <symbol id="anbau" viewBox="0 0 500 400">
-      <rect width="500" height="400" fill="url(#grid)"/>
-      <g fill="none" stroke="#d9d6cc" stroke-width="2.5">
-        <path d="M70 330V170L190 90L310 170V330Z"/><path d="M310 330V210H440V330"/><path d="M40 330H460"/>
-        <rect x="110" y="200" width="50" height="60"/><rect x="220" y="200" width="50" height="60"/>
-      </g>
-      <g fill="#e3a63c" fill-opacity=".18" stroke="#e3a63c" stroke-width="2" stroke-dasharray="7 5"><rect x="310" y="210" width="130" height="120"/></g>
-      <text x="375" y="275" text-anchor="middle" font-family="Archivo, sans-serif" font-size="14" fill="#a4a9a3">neu</text>
-    </symbol>
-    <symbol id="grundriss" viewBox="0 0 500 400">
-      <rect width="500" height="400" fill="url(#grid)"/>
-      <g fill="none" stroke="#d9d6cc" stroke-width="5"><path d="M70 60H430V340H70Z"/></g>
-      <g fill="none" stroke="#d9d6cc" stroke-width="3"><path d="M250 60V180M250 230V340M70 200H190M240 200H430"/></g>
-      <g fill="none" stroke="#e3a63c" stroke-width="1.5"><path d="M190 200A50 50 0 0 1 240 200"/><path d="M250 180A50 50 0 0 0 250 230"/></g>
-      <g font-family="Archivo, sans-serif" font-size="14" fill="#a4a9a3" text-anchor="middle"><text x="160" y="135">Wohnen 32 m²</text><text x="340" y="135">Küche 14 m²</text><text x="160" y="275">Zimmer 15 m²</text><text x="340" y="275">Bad 7 m²</text></g>
-    </symbol>
-  </defs>
-</svg>
-
 <div class="top"><div class="wrap"><span>Montag–Freitag 7:00–12:00 und 13:00–17:00</span><span>044 000 00 00 · info@tannwald-bau.example</span></div></div>
 
 <nav class="nav" aria-label="Hauptnavigation">
@@ -217,7 +175,7 @@ footer a { text-decoration: none; }
           <p class="muted">Baumeisterarbeiten für Einfamilienhäuser, Mehrfamilienhäuser und Gewerbebauten im Zürcher Unterland. Mit eigener Equipe, eigenem Bauführer und festen Terminen.</p>
           <div class="btns"><a class="btn" href="#kontakt">Projekt besprechen</a><a class="btn line" href="#projekte">Referenzen ansehen</a></div>
         </div>
-        <figure class="plan" style="margin:0"><svg role="img" aria-label="Planzeichnung eines Einfamilienhauses als Platzhalter"><use href="#efh"/></svg><figcaption>Platzhalter: Projektfoto</figcaption></figure>
+        <figure class="plan" style="margin:0"><img src="../img/fotos/tannwald-dachstuhl.webp" alt="Neuer Dachstuhl aus Holz auf einem Rohbau" loading="eager" decoding="async"><figcaption>Beispielfoto</figcaption></figure>
       </section>
     </div>
     <div class="wrap">
@@ -256,12 +214,11 @@ footer a { text-decoration: none; }
 
   <!-- PROJEKTE -->
   <div class="page" data-page="projekte">
-    <div class="page-head"><div class="wrap"><span class="kicker">Referenzen</span><h1>Ausgewählte Projekte</h1><p class="muted">Vier Beispiele aus den letzten Jahren. Gerne vermitteln wir Ihnen den Kontakt zu früheren Bauherrschaften.</p></div></div>
+    <div class="page-head"><div class="wrap"><span class="kicker">Referenzen</span><h1>Ausgewählte Projekte</h1><p class="muted">Drei Beispiele aus den letzten Jahren. Gerne vermitteln wir Ihnen den Kontakt zu früheren Bauherrschaften.</p></div></div>
     <section class="block"><div class="wrap projects">
-      <article class="project"><figure class="plan" style="margin:0"><svg role="img" aria-label="Planzeichnung Anbau"><use href="#anbau"/></svg><figcaption>Platzhalter: Projektfoto</figcaption></figure><h3>Anbau Einfamilienhaus</h3><div class="meta"><span><b>Ort</b> Bachenbülach</span><span><b>Jahr</b> 2025</span><span><b>Bauzeit</b> 4 Monate</span></div><p class="muted">Erweiterung um ein Zimmer mit Bad, angeschlossen an das bestehende Haus aus den 1970er-Jahren.</p></article>
-      <article class="project"><figure class="plan" style="margin:0"><svg role="img" aria-label="Planzeichnung Mehrfamilienhaus"><use href="#mfh"/></svg><figcaption>Platzhalter: Projektfoto</figcaption></figure><h3>Mehrfamilienhaus, 9 Wohnungen</h3><div class="meta"><span><b>Ort</b> Bülach</span><span><b>Jahr</b> 2024</span><span><b>Bauzeit</b> 11 Monate</span></div><p class="muted">Rohbau im Auftrag eines Generalunternehmers, inklusive Tiefgarage mit 12 Plätzen.</p></article>
-      <article class="project"><figure class="plan" style="margin:0"><svg role="img" aria-label="Grundriss Wohnungssanierung"><use href="#grundriss"/></svg><figcaption>Platzhalter: Projektfoto</figcaption></figure><h3>Sanierung 4½-Zimmer-Wohnung</h3><div class="meta"><span><b>Ort</b> Embrach</span><span><b>Jahr</b> 2025</span><span><b>Bauzeit</b> 6 Wochen</span></div><p class="muted">Offene Küche durch Wanddurchbruch, neue Böden und Bad. Die Bewohner blieben während der Arbeiten im Haus.</p></article>
-      <article class="project"><figure class="plan" style="margin:0"><svg role="img" aria-label="Planzeichnung Einfamilienhaus"><use href="#efh"/></svg><figcaption>Platzhalter: Projektfoto</figcaption></figure><h3>Neubau Einfamilienhaus</h3><div class="meta"><span><b>Ort</b> Höri</span><span><b>Jahr</b> 2023</span><span><b>Bauzeit</b> 7 Monate</span></div><p class="muted">Massivbau mit Satteldach nach Plänen eines Architekturbüros aus Winterthur.</p></article>
+      <article class="project"><figure class="plan" style="margin:0"><img src="../img/fotos/tannwald-anbau.webp" alt="Haus mit Anbau und dunkler Holzfassade im Schnee" loading="lazy" decoding="async"><figcaption>Beispielfoto</figcaption></figure><h3>Anbau Einfamilienhaus</h3><div class="meta"><span><b>Ort</b> Bachenbülach</span><span><b>Jahr</b> 2025</span><span><b>Bauzeit</b> 4 Monate</span></div><p class="muted">Erweiterung um ein Zimmer mit Bad, angeschlossen an das bestehende Haus aus den 1970er-Jahren.</p></article>
+      <article class="project"><figure class="plan" style="margin:0"><img src="../img/fotos/tannwald-mfh.webp" alt="Mehrfamilienhaus im Rohbau mit Stützen" loading="lazy" decoding="async"><figcaption>Beispielfoto</figcaption></figure><h3>Mehrfamilienhaus, 9 Wohnungen</h3><div class="meta"><span><b>Ort</b> Bülach</span><span><b>Jahr</b> 2024</span><span><b>Bauzeit</b> 11 Monate</span></div><p class="muted">Rohbau im Auftrag eines Generalunternehmers, inklusive Tiefgarage mit 12 Plätzen.</p></article>
+      <article class="project"><figure class="plan" style="margin:0"><img src="../img/fotos/tannwald-kueche.webp" alt="Offene Küche mit Esstisch nach der Sanierung" loading="lazy" decoding="async"><figcaption>Beispielfoto</figcaption></figure><h3>Sanierung 4½-Zimmer-Wohnung</h3><div class="meta"><span><b>Ort</b> Embrach</span><span><b>Jahr</b> 2025</span><span><b>Bauzeit</b> 6 Wochen</span></div><p class="muted">Offene Küche durch Wanddurchbruch, neue Böden und Bad. Die Bewohner blieben während der Arbeiten im Haus.</p></article>
     </div></section>
   </div>
 
@@ -319,7 +276,7 @@ footer a { text-decoration: none; }
     <div><h3>Büro</h3><ul><li>Mo–Fr 7:00–12:00</li><li>13:00–17:00</li></ul></div>
     <div><h3>Rechtliches</h3><ul><li><a href="#kontakt">Impressum</a></li><li><a href="#kontakt">Datenschutz</a></li></ul></div>
   </div>
-  <div class="legal"><div class="wrap"><span>© 2026 Tannwald Bau AG · Keine Cookies, kein Tracking</span><span>Beispielseite, erfundene Firma</span></div></div>
+  <div class="legal"><div class="wrap"><span>© 2026 Tannwald Bau AG · Keine Cookies, kein Tracking</span><span>Beispielseite, erfundene Firma · Fotos: <a href="https://unsplash.com/license">Unsplash</a></span></div></div>
 </footer>
 
 <script>
